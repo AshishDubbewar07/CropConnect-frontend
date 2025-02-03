@@ -5,6 +5,8 @@ import Register from "../Components/common/Register";
 import About from "../Components/common/About";
 import ContactUs from "../Components/common/ContactUs";
 import Home from "../Components/common/Home";
+import BlogPage from "../Components/common/BlogPage";
+import Dashboard from "../Components/admin/Dashboard";
 
 
 const router=createBrowserRouter([
@@ -12,7 +14,9 @@ const router=createBrowserRouter([
     {path:"/login",element:<Login/>},
     {path:"/register", element:<Register/>},
     {path:"/about", element:<About/>},
-    {path:"/contact", element:<ContactUs/>}
+    {path:"/contact", element:<ContactUs/>},
+    {path:"/blog", element:<BlogPage/>},
+    {path:"/admin", element:<Dashboard/>}
 
 ])
 
