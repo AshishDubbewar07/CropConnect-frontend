@@ -1,7 +1,7 @@
 import React , { useEffect, useState } from 'react'
 import { Box, TextField, Button, styled, Typography,Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import { useNavigate } from 'react-router';
-import NavBar from './NavBar';
+import NavBar from '../Components/Layout/Navbar';
 
 
 const OuterContainer = styled(Box)`
