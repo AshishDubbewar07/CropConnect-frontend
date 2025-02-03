@@ -11,7 +11,7 @@ import {
   InputLabel,
 } from "@mui/material";
 import { useNavigate } from "react-router";
-import NavBar from "./NavBar";
+import NavBar from "./Layout/Navbar";
 import axios from "axios";
 import { stateCityData } from "./statecityData";
 
