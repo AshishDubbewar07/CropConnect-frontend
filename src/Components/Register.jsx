@@ -154,7 +154,6 @@ const Register = () => {
       alert("All fields are required!");
       return;
     }
-  
     try {
       console.log(signup);
       const response = await axios.post("http://localhost:8080/register", signup);
