@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import {
   AppBar,
   Toolbar,
@@ -15,6 +16,7 @@ import {
   Menu as MenuIcon,
   Dashboard,
   People,
+  Article,
   ShoppingCart,
   Chat,
   Notifications,
@@ -24,6 +26,7 @@ import {
 
 const AdminNavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
@@ -32,16 +35,13 @@ const AdminNavBar = () => {
   const menuItems = [
     { text: "Dashboard", icon: <Dashboard /> },
     { text: "Users", icon: <People /> },
-    { text: "Orders", icon: <ShoppingCart /> },
-    { text: "Chat", icon: <Chat /> },
-    { text: "Notifications", icon: <Notifications /> },
-    { text: "Settings", icon: <Settings /> },
+    { text: "Blog", icon: <Article /> },
     { text: "Logout", icon: <Logout /> },
   ];
 
   return (
     <>
-      {/* Top Navbar */}
+      {/* Top Navigation Bar */}
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" color="inherit" onClick={toggleDrawer}>
@@ -50,9 +50,6 @@ const AdminNavBar = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Admin Dashboard
           </Typography>
-          {/* <IconButton color="inherit">
-            <Notifications />
-          </IconButton> */}
         </Toolbar>
       </AppBar>
 
@@ -60,8 +57,13 @@ const AdminNavBar = () => {
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
         <Box width={250} role="presentation" onClick={toggleDrawer}>
           <List>
-            {menuItems.map((item, index) => (
-              <ListItem button key={index}>
+            {menuItems.map((item) => (
+              <ListItem
+                key={item.text}
+                component="div" 
+                onClick={() => navigate(`/admin/${item.text.toLowerCase()}`)}
+                sx={{ cursor: "pointer" }} // Ensures clickable styling
+              >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItem>
