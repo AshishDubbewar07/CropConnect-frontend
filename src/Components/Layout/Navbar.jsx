@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
+import router from "../../routes/routes";
 
 const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(null);
@@ -48,12 +49,12 @@ const Navbar = () => {
                     {/* Navigation Links */}
                     <ul className="hidden lg:flex space-x-6 items-center">
                         {[
-                            { label: "Home" },
-                            { label: "About", link: "about.html" },
+                            { label: "Home" , link:"/"},
+                            { label: "About", link: "/about" },
                             { label: "Service", submenu: ["Service", "Service Details"] },
                             { label: "Pages", submenu: ["About", "Project", "Donation"] },
-                            { label: "Blog", submenu: ["Blog Grid", "Blog List"] },
-                            { label: "Contact", link: "Contact.jsx" },
+                            { label: "Blog", link:"/blogs"},
+                            { label: "Contact", link: "/contact" },
                         ].map((item, index) => (
                             <li 
                                 key={index} 
