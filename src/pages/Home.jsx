@@ -1,7 +1,9 @@
 import React from 'react'
 import Navbar from '../Components/Layout/Navbar'
 import Footer from '../Components/Layout/Footer'
-// import HeroSection from '../Components/HeroSection'
+import HeroSection from '../Components/HeroSection'
+import HowItWorks from '../Components/HowItWorks'
+
 
 
 
@@ -9,10 +11,10 @@ import Footer from '../Components/Layout/Footer'
 const Home = () => {
   return (
    <>
-    <Navbar/>
-    {/* <HeroSection/>  */}
+
+   <HeroSection/>
+    <HowItWorks/>
     
-    <Footer/>
    </>
   )
 }

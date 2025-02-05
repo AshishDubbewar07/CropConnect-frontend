@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Box, TextField, Button, styled, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
-import NavBar from "../Components/Layout/Navbar"; // Ensure you import NavBar
 
 const OuterContainer = styled(Box)`
-  padding-top: 80px; /* Add space for the navbar */`;
-
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding-top: 80px; /* Add space for the navbar */
+  padding-bottom: 80px; /* Add space for the footer */
+  background-color: #f5f5f5; /* Optional background color */
+`;
 const Component = styled(Box)`
-  width: 400px;
-  margin: auto;
+  width: 30vw;
+  margin: 4rem;
+border-radius: 5px;
+  padding: 2rem;
   box-shadow: 5px 2px 5px 2px rgba(0 0 0 / 0.6);
   background-color: #fff; /* Optional white background */
 `;
@@ -26,7 +34,7 @@ const Wrapper = styled(Box)`
 
 const LoginButton = styled(Button)`
   text-transform: none;
-  background: #fb641b;
+  background: var(--primary-color);
   height: 48px;
   border-radius: 2px;
   color: white;
@@ -66,13 +74,13 @@ const Login = () => {
 
     return (
         <>
-            <NavBar />
-            <OuterContainer>
+        
+            <OuterContainer  >
                 <Component>
                     <Box>
                         <Typography
                             variant="h4"
-                            sx={{ fontWeight: "bold", textAlign: "center" }}
+                            sx={{ fontWeight: "bold", textAlign: "center", borderBottom: "2px solid black" }}
                         >
                             Login
                         </Typography>
