@@ -1,17 +1,28 @@
-import React from "react";
-import { createBrowserRouter } from "react-router-dom"; // Use "react-router-dom" instead of "react-router"
-import Home from "../pages/Home";
-import ContactUsForm from "../pages/ContactUs";
-import Login from "../Components/Login";
-import Register from "../Components/Register"; // Import Register component
-import BlogPage from "../pages/BlogPage";
+import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import Home from '../pages/Home';
+
+import ContactUsForm from '../pages/ContactUs';
+import BlogPage from '../pages/BlogPage';
+import ChatCard from '../Components/ChatCard';
+import Layout from '../Components/Layout/Layout';
+import  Login  from '../Components/Login';
+import  Register  from '../Components/Register';
 
 const router = createBrowserRouter([
-    { path: "", element: <Home /> },
-    { path: "/login", element: <Login /> },
-    { path: "/register", element: <Register /> }, // Register route fixed
-    { path: "/contact", element: <ContactUsForm /> },
-    {path:"/blogs",element:<BlogPage/>}
+
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            { path: "/", element: <Home /> },
+            { path: "/login", element: <Login/> },
+            { path: "/register", element: <Register /> },
+            { path: "/contact", element: <ContactUsForm /> },
+            { path: "/blogs", element: <BlogPage /> },
+            { path: "/chat", element: <ChatCard /> }
+        ]
+    }
 ]);
 
 export default router;
