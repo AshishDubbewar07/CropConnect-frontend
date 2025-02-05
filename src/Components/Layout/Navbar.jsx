@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
+import {Link} from "react-router-dom";
 import router from "../../routes/routes";
 
 const Navbar = () => {
@@ -89,11 +90,11 @@ const Navbar = () => {
                     </ul>
 
                     {/* Search & Button */}
-                    <div className="flex items-center space-x-4">
-                        <BiSearch className="text-xl text-gray-600 cursor-pointer" />
-                        <a href="contact.html" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    <div className="flex items-center space-x-4 ">
+                        <BiSearch className="text-xl text-white- cursor-pointer" />
+                        <Link to="/contact" className="bg-[#4baf47] text-white px-4 py-2 rounded-md  ">
                             Get A Quote
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </nav>

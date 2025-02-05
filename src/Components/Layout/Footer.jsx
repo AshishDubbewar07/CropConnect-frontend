@@ -5,7 +5,9 @@ import { GitHub, LinkedIn, Twitter } from '@mui/icons-material';
 const Footer = () => {
   return (
     <Box sx={{
-      backgroundColor: '#000',
+      backgroundColor: '#4baf47',
+      width: '100%',
+       bottom: 0,
       color: '#fff',
       padding: '20px 0',
       textAlign: 'center',
