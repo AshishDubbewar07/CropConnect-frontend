@@ -8,6 +8,7 @@ import ChatCard from '../Components/ChatCard';
 import Layout from '../Components/Layout/Layout';
 import  Login  from '../Components/Login';
 import  Register  from '../Components/Register';
+import DailyPriceModule from '../Components/DailyPriceModule';
 
 const router = createBrowserRouter([
 
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
             { path: "/register", element: <Register /> },
             { path: "/contact", element: <ContactUsForm /> },
             { path: "/blogs", element: <BlogPage /> },
-            { path: "/chat", element: <ChatCard /> }
+            { path: "/chat", element: <ChatCard /> },
+            {path:"/dailyprice", element:<DailyPriceModule/>}
         ]
     }
 ]);
