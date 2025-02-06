@@ -53,7 +53,7 @@ const Navbar = () => {
                             { label: "Home" , link:"/"},
                             { label: "About", link: "/about" },
                             { label: "Service", submenu: ["Service", "Service Details"] },
-                            { label: "Pages", submenu: ["About", "Project", "Donation"] },
+                            { label: "Daily Price", link:"/dailyprice" },
                             { label: "Blog", link:"/blogs"},
                             { label: "Contact", link: "/contact" },
                         ].map((item, index) => (

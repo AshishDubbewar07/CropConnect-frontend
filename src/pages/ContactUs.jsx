@@ -39,7 +39,7 @@ const ContactUsForm = () => {
         initialValues={{ name: '', email: '', message: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          axios.post(`http://localhost:8080/api/messages`, values)
+          axios.post(`http://localhost:8080/messages`, values)
             .then(response => {
               toast.success('Message sent successfully!');
               resetForm();

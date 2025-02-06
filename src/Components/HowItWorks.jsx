@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
@@ -32,8 +31,8 @@ const steps = [
   },
 ];
 
-const MotionCard = styled(motion(Card))(({ theme }) => ({
- margin: theme.spacing(2),
+const MotionCard = styled(motion.create(Card))(({ theme }) => ({
+  margin: theme.spacing(2),
   padding: theme.spacing(2),
   backgroundColor: 'black',
   color: 'white',
@@ -65,7 +64,7 @@ const HowItWorks = () => {
     >
       {steps.map((step, index) => (
         <Box color="white"
-        sx={ {"data-aos":"fade-right"} }
+       
          key={step.number}
 
           initial={{ opacity: 0 }}
@@ -97,3 +96,173 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
+
+// // FILE: src/components/DailyPriceModule.jsx
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import { Box, Button, CircularProgress, MenuItem, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper } from '@mui/material';
+
+// const DailyPriceModule = () => {
+//   const [states, setStates] = useState([]);
+//   const [districts, setDistricts] = useState([]);
+//   const [markets, setMarkets] = useState([]);
+//   const [commodities, setCommodities] = useState(['Wheat', 'Rice', 'Corn']); // Example commodities
+//   const [selectedState, setSelectedState] = useState('');
+//   const [selectedDistrict, setSelectedDistrict] = useState('');
+//   const [selectedMarket, setSelectedMarket] = useState('');
+//   const [selectedCommodity, setSelectedCommodity] = useState('');
+//   const [priceData, setPriceData] = useState([]);
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState('');
+
+//   useEffect(() => {
+//     // Fetch states
+//     axios.get('/api/states')
+//       .then(response => {
+//         if (Array.isArray(response.data)) {
+//           setStates(response.data);
+//         } else {
+//           setError('Failed to fetch states');
+//         }
+//       })
+//       .catch(error => setError('Failed to fetch states'));
+//   }, []);
+
+//   useEffect(() => {
+//     if (selectedState) {
+//       // Fetch districts based on state
+//       axios.get(`/api/districts/${selectedState}`)
+//         .then(response => {
+//           if (Array.isArray(response.data)) {
+//             setDistricts(response.data);
+//           } else {
+//             setError('Failed to fetch districts');
+//           }
+//         })
+//         .catch(error => setError('Failed to fetch districts'));
+//     }
+//   }, [selectedState]);
+
+//   useEffect(() => {
+//     if (selectedDistrict) {
+//       // Fetch markets based on district
+//       axios.get(`/api/markets/${selectedDistrict}`)
+//         .then(response => {
+//           if (Array.isArray(response.data)) {
+//             setMarkets(response.data);
+//           } else {
+//             setError('Failed to fetch markets');
+//           }
+//         })
+//         .catch(error => setError('Failed to fetch markets'));
+//     }
+//   }, [selectedDistrict]);
+
+//   const handleGetPrice = () => {
+//     setLoading(true);
+//     setError('');
+//     // Fetch price data
+//     axios.get(`/api/prices?state=${selectedState}&district=${selectedDistrict}&market=${selectedMarket}&commodity=${selectedCommodity}`)
+//       .then(response => {
+//         if (Array.isArray(response.data)) {
+//           setPriceData(response.data);
+//         } else {
+//           setError('Failed to fetch price data');
+//         }
+//         setLoading(false);
+//       })
+//       .catch(error => {
+//         setError('Failed to fetch price data');
+//         setLoading(false);
+//       });
+//   };
+
+//   return (
+//     <Box sx={{ padding: 4 }}>
+//       <Typography variant="h4" gutterBottom>Daily Price Module</Typography>
+//       <Box sx={{ display: 'flex', gap: 2, marginBottom: 2 }}>
+//         <Select
+//           value={selectedState}
+//           onChange={(e) => setSelectedState(e.target.value)}
+//           displayEmpty
+//           fullWidth
+//         >
+//           <MenuItem value="" disabled>Select State</MenuItem>
+//           {states.map(state => (
+//             <MenuItem key={state} value={state}>{state}</MenuItem>
+//           ))}
+//         </Select>
+//         <Select
+//           value={selectedDistrict}
+//           onChange={(e) => setSelectedDistrict(e.target.value)}
+//           displayEmpty
+//           fullWidth
+//           disabled={!selectedState}
+//         >
+//           <MenuItem value="" disabled>Select District</MenuItem>
+//           {districts.map(district => (
+//             <MenuItem key={district} value={district}>{district}</MenuItem>
+//           ))}
+//         </Select>
+//         <Select
+//           value={selectedMarket}
+//           onChange={(e) => setSelectedMarket(e.target.value)}
+//           displayEmpty
+//           fullWidth
+//           disabled={!selectedDistrict}
+//         >
+//           <MenuItem value="" disabled>Select Market</MenuItem>
+//           {markets.map(market => (
+//             <MenuItem key={market} value={market}>{market}</MenuItem>
+//           ))}
+//         </Select>
+//         <Select
+//           value={selectedCommodity}
+//           onChange={(e) => setSelectedCommodity(e.target.value)}
+//           displayEmpty
+//           fullWidth
+//           disabled={!selectedMarket}
+//         >
+//           <MenuItem value="" disabled>Select Commodity</MenuItem>
+//           {commodities.map(commodity => (
+//             <MenuItem key={commodity} value={commodity}>{commodity}</MenuItem>
+//           ))}
+//         </Select>
+//       </Box>
+//       <Button variant="contained" color="primary" onClick={handleGetPrice} disabled={loading}>
+//         {loading ? <CircularProgress size={24} /> : 'Get Price'}
+//       </Button>
+//       {error && <Typography color="error" sx={{ marginTop: 2 }}>{error}</Typography>}
+//       <TableContainer component={Paper} sx={{ marginTop: 4 }}>
+//         <Table>
+//           <TableHead>
+//             <TableRow>
+//               <TableCell>Commodity</TableCell>
+//               <TableCell>Price</TableCell>
+//               <TableCell>Market</TableCell>
+//               <TableCell>Date</TableCell>
+//             </TableRow>
+//           </TableHead>
+//           <TableBody>
+//             {priceData.length > 0 ? (
+//               priceData.map((price, index) => (
+//                 <TableRow key={index}>
+//                   <TableCell>{price.commodity}</TableCell>
+//                   <TableCell>{price.price}</TableCell>
+//                   <TableCell>{price.market}</TableCell>
+//                   <TableCell>{price.date}</TableCell>
+//                 </TableRow>
+//               ))
+//             ) : (
+//               <TableRow>
+//                 <TableCell colSpan={4} align="center">No data available</TableCell>
+//               </TableRow>
+//             )}
+//           </TableBody>
+//         </Table>
+//       </TableContainer>
+//     </Box>
+//   );
+// };
+
+// export default DailyPriceModule;
